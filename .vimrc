@@ -59,6 +59,9 @@ let g:mapleader = ","
 nmap <Leader>w :w!<CR>
 nmap <Leader>q :q<CR>
 nmap <Leader>p :set paste<CR>
+nmap <Leader>c :!./configure<CR>
+nmap <Leader>mw :set makeprg=wkmake<CR>
+nmap <Leader>mn :set makeprg=make<CR>
 nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
@@ -81,11 +84,11 @@ let g:xml_syntax_folding=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FileType                                                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype on				" Enable filetype detection
+filetype off				" Disable filetype detection, which vundle need
 filetype indent on			" Enable filetype-specific indenting
 filetype plugin on			" Enable filetype-specific plugins
-autocmd FileType c,cpp,cc,h	set cindent
-autocmd FileType c		set omnifunc=ccomplete#Complete
+"autocmd FileType c,cpp,cc,h	set cindent
+"autocmd FileType c		set omnifunc=ccomplete#Complete
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -130,6 +133,8 @@ set hlsearch				" search highlighting
 	""""""""""""""""""""""""""""""
 	Bundle 'tpope/vim-fugitive'
 	nmap <Leader>gbl :Gblame<CR>
+	nmap <Leader>gst :Gstatus<CR>
+	nmap <Leader>glo :Glog<CR>
 
 	""""""""""""""""""""""""""""""
 	" gitv
@@ -156,3 +161,18 @@ set hlsearch				" search highlighting
 	Bundle 'Lokaltog/vim-powerline'
 	let g:Powerline_symbols = 'fancy'
 	let g:Powerline_symbols = 'unicode'
+
+	""""""""""""""""""""""""""""""
+	" vim-unimpaired
+	" https://github.com/tpope/vim-unimpaired
+	""""""""""""""""""""""""""""""
+	Bundle 'tpope/vim-unimpaired'
+
+	""""""""""""""""""""""""""""""
+	" CCTree
+	" https://github.com/vim-scripts/CCTree
+	""""""""""""""""""""""""""""""
+	Bundle 'ych/CCTree'
+	nmap <F3> :CCTreeLoadDB<CR>
+	let g:CCTreeEnhancedSymbolProcessing=1
+	let g:CCTreeKeyHilightTree = '<C-\>l'
