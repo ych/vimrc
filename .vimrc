@@ -19,12 +19,14 @@ set backspace=2				" Can use backspace
 set history=500				" Set how many lines of history VIM have to remember
 set t_Co=256				" Set number of colors
 set ruler				" Show the cursor position all the time
-set wildchar=<TAB>			" start wild expansion in the command line using <TAB>
-set wildmenu				" wild char completion menu"
-set smartcase				" ignore case if search pattern is all lowercase,case-sensitive otherwise
-set smarttab				" insert tabs on the start of a line according to context
+set wildchar=<TAB>			" Start wild expansion in the command line using <TAB>
+set wildmenu				" Wild char completion menu
+set smartcase				" Ignore case if search pattern is all lowercase,case-sensitive otherwise
+set smarttab				" Insert tabs on the start of a line according to context
 set showfulltag				" Show full completion tags
 set laststatus=2			" The last window will always have a status line
+set cursorline				" Highlight the screen line of the cursor
+set hlsearch				" search highlighting
 
 if has('cscope')
 	set cscopetag
@@ -44,10 +46,11 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color Scheme                                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme xorium
+"colorscheme xorium
 "colorscheme molokai
 "colorscheme inkpot
 "colorscheme zenburn
+colorscheme yzlin256
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,7 +98,6 @@ filetype plugin on			" Enable filetype-specific plugins
 " Syntax                                                      "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on				" syntax highlight
-set hlsearch				" search highlighting
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -176,3 +178,11 @@ set hlsearch				" search highlighting
 	nmap <F3> :CCTreeLoadDB<CR>
 	let g:CCTreeEnhancedSymbolProcessing=1
 	let g:CCTreeKeyHilightTree = '<C-\>l'
+
+	""""""""""""""""""""""""""""""
+	" gtk-vim-syntax
+	" https://github.com/vim-scripts/gtk-vim-syntax
+	""""""""""""""""""""""""""""""
+	Bundle 'ych/gtk-vim-syntax'
+	let glib_deprecated_errors = 1
+	let gobject_deprecated_errors = 1
