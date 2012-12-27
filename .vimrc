@@ -19,7 +19,6 @@ set backspace=2				" Can use backspace
 set history=500				" Set how many lines of history VIM have to remember
 set t_Co=256				" Set number of colors
 set ruler				" Show the cursor position all the time
-set wildchar=<TAB>			" Start wild expansion in the command line using <TAB>
 set wildmenu				" Wild char completion menu
 set smartcase				" Ignore case if search pattern is all lowercase,case-sensitive otherwise
 set smarttab				" Insert tabs on the start of a line according to context
@@ -87,9 +86,8 @@ let g:xml_syntax_folding=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FileType                                                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off				" Disable filetype detection, which vundle need
-filetype indent on			" Enable filetype-specific indenting
-filetype plugin on			" Enable filetype-specific plugins
+filetype plugin indent on		" Enable filetype-specific indenting and plugins
+au BufRead,BufNewFile *.go	setfiletype go
 "autocmd FileType c,cpp,cc,h	set cindent
 "autocmd FileType c		set omnifunc=ccomplete#Complete
 
@@ -186,3 +184,9 @@ syntax on				" syntax highlight
 	Bundle 'ych/gtk-vim-syntax'
 	let glib_deprecated_errors = 1
 	let gobject_deprecated_errors = 1
+
+	""""""""""""""""""""""""""""""
+	" vim-golang
+	" jnwhiteh/vim-golang
+	""""""""""""""""""""""""""""""
+	Bundle 'jnwhiteh/vim-golang'
