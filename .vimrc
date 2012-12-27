@@ -187,6 +187,19 @@ syntax on				" syntax highlight
 
 	""""""""""""""""""""""""""""""
 	" vim-golang
-	" jnwhiteh/vim-golang
+	" https://github.com/jnwhiteh/vim-golang
 	""""""""""""""""""""""""""""""
 	Bundle 'jnwhiteh/vim-golang'
+
+	""""""""""""""""""""""""""""""
+	" clang_complete
+	" https://github.com/Rip-Rip/clang_complete
+	""""""""""""""""""""""""""""""
+	Bundle 'Rip-Rip/clang_complete'
+	let g:clang_snippets = 1
+	let g:clang_snippets_engine = 'clang_complete'
+	"let g:clang_snippets_engine = 'snipmate'
+	"Bundle 'MarcWeber/vim-addon-mw-utils'
+	"Bundle 'tomtom/tlib_vim'
+	"Bundle 'honza/snipmate-snippets'
+	"Bundle 'garbas/vim-snipmate'
