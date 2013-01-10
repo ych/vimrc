@@ -26,6 +26,7 @@ set showfulltag				" Show full completion tags
 set laststatus=2			" The last window will always have a status line
 set cursorline				" Highlight the screen line of the cursor
 set hlsearch				" search highlighting
+set wildignore+=*.o,*.a,*.la,*.lo,*.so  " Files match with one of these patterns are ignored when completing names
 
 if has('cscope')
 	set cscopetag
@@ -75,6 +76,8 @@ nmap <F12> :!find . -iname '*.[ch]' \| cscope -Rbq<CR>
 " For C++ and C
 "nmap <F9> :!ctags --languages=c,c++ -R --sort=yes --c++-kinds=+plx --c-kinds=+plx --fields=+iaS --extra=+q .<CR>
 "nmap <F12> :!find . -iname '*.[ch]' -or -iname '*.[ch]pp' \| cscope -Rbq<CR>
+" Auto complete
+imap ,, <C-X><C-O>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -203,3 +206,17 @@ syntax on				" syntax highlight
 	"Bundle 'tomtom/tlib_vim'
 	"Bundle 'honza/snipmate-snippets'
 	"Bundle 'garbas/vim-snipmate'
+
+	""""""""""""""""""""""""""""""
+	" ctrlp.vim
+	" https://github.com/kien/ctrlp.vim
+	""""""""""""""""""""""""""""""
+	Bundle 'kien/ctrlp.vim'
+	let g:ctrlp_map = '<c-p>'
+	let g:ctrlp_cmd = 'CtrlP'
+	let g:ctrlp_working_path_mode = 'ra'
+	let g:ctrlp_custom_ignore = {
+	  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	  \ 'file': '\v\.(tar|gz|bz2|xz|swp)$',
+	  \ 'link': 'some_bad_symbolic_links',
+	  \ }
