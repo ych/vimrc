@@ -89,8 +89,7 @@ let g:xml_syntax_folding=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FileType                                                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype plugin indent on		" Enable filetype-specific indenting and plugins
-au BufRead,BufNewFile *.go	setfiletype go
+"au BufRead,BufNewFile *.go	setfiletype go
 "autocmd FileType c,cpp,cc,h	set cindent
 "autocmd FileType c		set omnifunc=ccomplete#Complete
 
@@ -104,19 +103,21 @@ syntax on				" syntax highlight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug-in configuration                                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
 	""""""""""""""""""""""""""""""
-	" vundle
-	" https://github.com/gmarik/vundle
+	" Vundle.vim
+	" https://github.com/gmarik/Vundle.vim
 	""""""""""""""""""""""""""""""
-	set rtp+=~/.vim/bundle/vundle/
-	call vundle#rc()
-	Bundle 'gmarik/vundle'
+	Plugin 'gmarik/Vundle.vim'
 
 	""""""""""""""""""""""""""""""
 	" tagbar
 	" https://github.com/majutsushi/tagbar
 	""""""""""""""""""""""""""""""
-	Bundle 'majutsushi/tagbar'
+	Plugin 'majutsushi/tagbar'
 	nmap <F8> :TagbarToggle<CR>
 	" set focus to TagBar when opening it
 	let g:tagbar_autofocus = 1
@@ -126,7 +127,7 @@ syntax on				" syntax highlight
 	" nerdtree
 	" https://github.com/scrooloose/nerdtree
 	""""""""""""""""""""""""""""""
-	Bundle 'scrooloose/nerdtree'
+	Plugin 'scrooloose/nerdtree'
 	nmap <F7> :NERDTreeToggle<CR>
 	let g:NERDTreeWinSize = 25
 
@@ -134,23 +135,23 @@ syntax on				" syntax highlight
 	" vim-fugitive
 	" https://github.com/tpope/vim-fugitive
 	""""""""""""""""""""""""""""""
-	Bundle 'tpope/vim-fugitive'
-	nmap <Leader>gbl :Gblame<CR>
-	nmap <Leader>gst :Gstatus<CR>
-	nmap <Leader>glo :Glog<CR>
+	"Plugin 'tpope/vim-fugitive'
+	"nmap <Leader>gbl :Gblame<CR>
+	"nmap <Leader>gst :Gstatus<CR>
+	"nmap <Leader>glo :Glog<CR>
 
 	""""""""""""""""""""""""""""""
 	" gitv
 	" https://github.com/gregsexton/gitv
 	""""""""""""""""""""""""""""""
-	Bundle 'gregsexton/gitv'
-	nmap <F6> :Gitv!<CR>
+	"Plugin 'gregsexton/gitv'
+	"nmap <F6> :Gitv!<CR>
 
 	""""""""""""""""""""""""""""""
 	" gundo
 	" https://github.com/sjl/gundo.vim
 	""""""""""""""""""""""""""""""
-	Bundle 'sjl/gundo.vim'
+	Plugin 'sjl/gundo.vim'
 	nmap <F5> :GundoToggle<CR>
 	let g:gundo_right = 1
 	let g:gundo_help = 0		" Set this to 0 to disable the help text in the Gundo graph window
@@ -161,7 +162,7 @@ syntax on				" syntax highlight
 	" vim-powerline
 	" https://github.com/Lokaltog/vim-powerline
 	""""""""""""""""""""""""""""""
-	Bundle 'Lokaltog/vim-powerline'
+	Plugin 'Lokaltog/vim-powerline'
 	let g:Powerline_symbols = 'fancy'
 	let g:Powerline_symbols = 'unicode'
 
@@ -169,38 +170,32 @@ syntax on				" syntax highlight
 	" vim-unimpaired
 	" https://github.com/tpope/vim-unimpaired
 	""""""""""""""""""""""""""""""
-	Bundle 'tpope/vim-unimpaired'
+	"Plugin 'tpope/vim-unimpaired'
 
 	""""""""""""""""""""""""""""""
 	" CCTree
 	" https://github.com/vim-scripts/CCTree
 	""""""""""""""""""""""""""""""
-	Bundle 'ych/CCTree'
-	nmap <F3> :CCTreeLoadDB<CR>
-	let g:CCTreeEnhancedSymbolProcessing=1
-	let g:CCTreeKeyHilightTree = '<C-\>l'
+	"Plugin 'ych/CCTree'
+	"nmap <F3> :CCTreeLoadDB<CR>
+	"let g:CCTreeEnhancedSymbolProcessing=1
+	"let g:CCTreeKeyHilightTree = '<C-\>l'
 
 	""""""""""""""""""""""""""""""
 	" gtk-vim-syntax
 	" https://github.com/vim-scripts/gtk-vim-syntax
 	""""""""""""""""""""""""""""""
-	Bundle 'ych/gtk-vim-syntax'
-	let glib_deprecated_errors = 1
-	let gobject_deprecated_errors = 1
-
-	""""""""""""""""""""""""""""""
-	" vim-golang
-	" https://github.com/jnwhiteh/vim-golang
-	""""""""""""""""""""""""""""""
-	Bundle 'jnwhiteh/vim-golang'
+	"Plugin 'ych/gtk-vim-syntax'
+	"let glib_deprecated_errors = 1
+	"let gobject_deprecated_errors = 1
 
 	""""""""""""""""""""""""""""""
 	" clang_complete
 	" https://github.com/Rip-Rip/clang_complete
 	""""""""""""""""""""""""""""""
-	Bundle 'Rip-Rip/clang_complete'
-	let g:clang_snippets = 1
-	let g:clang_snippets_engine = 'clang_complete'
+	"Plugin 'Rip-Rip/clang_complete'
+	"let g:clang_snippets = 1
+	"let g:clang_snippets_engine = 'clang_complete'
 	"let g:clang_snippets_engine = 'snipmate'
 	"Bundle 'MarcWeber/vim-addon-mw-utils'
 	"Bundle 'tomtom/tlib_vim'
@@ -211,12 +206,20 @@ syntax on				" syntax highlight
 	" ctrlp.vim
 	" https://github.com/kien/ctrlp.vim
 	""""""""""""""""""""""""""""""
-	Bundle 'kien/ctrlp.vim'
-	let g:ctrlp_map = '<c-p>'
-	let g:ctrlp_cmd = 'CtrlP'
-	let g:ctrlp_working_path_mode = 'ra'
-	let g:ctrlp_custom_ignore = {
-	  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	  \ 'file': '\v\.(tar|gz|bz2|xz|swp)$',
-	  \ 'link': 'some_bad_symbolic_links',
-	  \ }
+	"Plugin 'kien/ctrlp.vim'
+	"let g:ctrlp_map = '<c-p>'
+	"let g:ctrlp_cmd = 'CtrlP'
+	"let g:ctrlp_working_path_mode = 'ra'
+	"let g:ctrlp_custom_ignore = {
+	"  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+	"  \ 'file': '\v\.(tar|gz|bz2|xz|swp)$',
+	"  \ 'link': 'some_bad_symbolic_links',
+	"  \ }
+	
+	""""""""""""""""""""""""""""""
+	" YouCompleteMe
+	" https://github.com/Valloric/YouCompleteMe
+	""""""""""""""""""""""""""""""
+	Plugin 'Valloric/YouCompleteMe'
+call vundle#end()
+filetype plugin indent on
