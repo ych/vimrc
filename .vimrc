@@ -63,7 +63,6 @@ nmap <Leader>w :w!<CR>
 nmap <Leader>q :q<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>c :!./configure<CR>
-nmap <Leader>mw :set makeprg=wkmake<CR>
 nmap <Leader>mn :set makeprg=make<CR>
 nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
@@ -132,22 +131,6 @@ call vundle#begin()
 	let g:NERDTreeWinSize = 25
 
 	""""""""""""""""""""""""""""""
-	" vim-fugitive
-	" https://github.com/tpope/vim-fugitive
-	""""""""""""""""""""""""""""""
-	"Plugin 'tpope/vim-fugitive'
-	"nmap <Leader>gbl :Gblame<CR>
-	"nmap <Leader>gst :Gstatus<CR>
-	"nmap <Leader>glo :Glog<CR>
-
-	""""""""""""""""""""""""""""""
-	" gitv
-	" https://github.com/gregsexton/gitv
-	""""""""""""""""""""""""""""""
-	"Plugin 'gregsexton/gitv'
-	"nmap <F6> :Gitv!<CR>
-
-	""""""""""""""""""""""""""""""
 	" gundo
 	" https://github.com/sjl/gundo.vim
 	""""""""""""""""""""""""""""""
@@ -159,67 +142,17 @@ call vundle#begin()
 	let g:gundo_width = 25
 
 	""""""""""""""""""""""""""""""
-	" vim-powerline
-	" https://github.com/Lokaltog/vim-powerline
+	" powerline
+	" https://github.com/Lokaltog/powerline
 	""""""""""""""""""""""""""""""
-	Plugin 'Lokaltog/vim-powerline'
-	let g:Powerline_symbols = 'fancy'
-	let g:Powerline_symbols = 'unicode'
-
-	""""""""""""""""""""""""""""""
-	" vim-unimpaired
-	" https://github.com/tpope/vim-unimpaired
-	""""""""""""""""""""""""""""""
-	"Plugin 'tpope/vim-unimpaired'
-
-	""""""""""""""""""""""""""""""
-	" CCTree
-	" https://github.com/vim-scripts/CCTree
-	""""""""""""""""""""""""""""""
-	"Plugin 'ych/CCTree'
-	"nmap <F3> :CCTreeLoadDB<CR>
-	"let g:CCTreeEnhancedSymbolProcessing=1
-	"let g:CCTreeKeyHilightTree = '<C-\>l'
-
-	""""""""""""""""""""""""""""""
-	" gtk-vim-syntax
-	" https://github.com/vim-scripts/gtk-vim-syntax
-	""""""""""""""""""""""""""""""
-	"Plugin 'ych/gtk-vim-syntax'
-	"let glib_deprecated_errors = 1
-	"let gobject_deprecated_errors = 1
-
-	""""""""""""""""""""""""""""""
-	" clang_complete
-	" https://github.com/Rip-Rip/clang_complete
-	""""""""""""""""""""""""""""""
-	"Plugin 'Rip-Rip/clang_complete'
-	"let g:clang_snippets = 1
-	"let g:clang_snippets_engine = 'clang_complete'
-	"let g:clang_snippets_engine = 'snipmate'
-	"Bundle 'MarcWeber/vim-addon-mw-utils'
-	"Bundle 'tomtom/tlib_vim'
-	"Bundle 'honza/snipmate-snippets'
-	"Bundle 'garbas/vim-snipmate'
-
-	""""""""""""""""""""""""""""""
-	" ctrlp.vim
-	" https://github.com/kien/ctrlp.vim
-	""""""""""""""""""""""""""""""
-	"Plugin 'kien/ctrlp.vim'
-	"let g:ctrlp_map = '<c-p>'
-	"let g:ctrlp_cmd = 'CtrlP'
-	"let g:ctrlp_working_path_mode = 'ra'
-	"let g:ctrlp_custom_ignore = {
-	"  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	"  \ 'file': '\v\.(tar|gz|bz2|xz|swp)$',
-	"  \ 'link': 'some_bad_symbolic_links',
-	"  \ }
+	Plugin 'Lokaltog/powerline'
+	set rtp+=~/vimrc/.vim/bundle/powerline/powerline/bindings/vim
 	
 	""""""""""""""""""""""""""""""
 	" YouCompleteMe
 	" https://github.com/Valloric/YouCompleteMe
 	""""""""""""""""""""""""""""""
 	Plugin 'Valloric/YouCompleteMe'
+
 call vundle#end()
 filetype plugin indent on
