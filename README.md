@@ -3,7 +3,6 @@ vimrc
 
 ych's vimrc
 
-
 Quick start
 -----------
 
@@ -13,16 +12,17 @@ ln -s ~/vimrc/.vimrc ~/.vimrc
 ln -s ~/vimrc/.vim ~/.vim
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
-cd ~/.vim/bundle/YouCompleteMe
-./install.sh --clang-completer
 ```
 
-Install extra packages(Instructions for Debian-based system Only)
------------
+Enable extra function of plugins(Instructions for Debian-based system only)
+-----------------------------------------------------------------
+
 # YouCompleteMe
 
 ```
 sudo aptitude install python-dev cmake build-essential
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
 ```
 
 # powerline
