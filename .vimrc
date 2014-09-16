@@ -27,6 +27,7 @@ set laststatus=2			" The last window will always have a status line
 set cursorline				" Highlight the screen line of the cursor
 set hlsearch				" search highlighting
 set wildignore+=*.o,*.a,*.la,*.lo,*.so  " Files match with one of these patterns are ignored when completing names
+"set list listchars=tab:»-,trail:·,extends:>
 
 if has('cscope')
 	set cscopetag
@@ -71,10 +72,10 @@ nmap <C-L> <C-W>l
 
 " Only for C
 nmap <F9> :!ctags --languages=c -R --sort=yes --c-kinds=+lx --fields=+aS --extra=+q .<CR>
-nmap <F12> :!find . -iname '*.[ch]' \| cscope -Rbq<CR>
+nmap <F6> :!find . -iname '*.[ch]' \| cscope -Rbq<CR>
 " For C++ and C
 "nmap <F9> :!ctags --languages=c,c++ -R --sort=yes --c++-kinds=+plx --c-kinds=+plx --fields=+iaS --extra=+q .<CR>
-"nmap <F12> :!find . -iname '*.[ch]' -or -iname '*.[ch]pp' \| cscope -Rbq<CR>
+"nmap <F6> :!find . -iname '*.[ch]' -or -iname '*.[ch]pp' \| cscope -Rbq<CR>
 " Auto complete
 imap ,, <C-X><C-O>
 
@@ -91,6 +92,7 @@ let g:xml_syntax_folding=1
 "au BufRead,BufNewFile *.go	setfiletype go
 "autocmd FileType c,cpp,cc,h	set cindent
 "autocmd FileType c		set omnifunc=ccomplete#Complete
+let c_space_errors = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -121,6 +123,33 @@ call vundle#begin()
 	" set focus to TagBar when opening it
 	let g:tagbar_autofocus = 1
 	let g:tagbar_width = 25
+	let g:tagbar_type_go = {
+	    \ 'ctagstype' : 'go',
+	    \ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	    \ ],
+	    \ 'sro' : '.',
+	    \ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	    \ },
+	    \ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	    \ },
+	    \ 'ctagsbin'  : 'gotags',
+	    \ 'ctagsargs' : '-sort -silent'
+	\ }
 
 	""""""""""""""""""""""""""""""
 	" nerdtree
@@ -153,6 +182,13 @@ call vundle#begin()
 	" https://github.com/Valloric/YouCompleteMe
 	""""""""""""""""""""""""""""""
 	Plugin 'Valloric/YouCompleteMe'
+
+	""""""""""""""""""""""""""""""
+	" vim-go
+	" https://github.com/fatih/vim-go
+	""""""""""""""""""""""""""""""
+	Plugin 'fatih/vim-go'
+	let g:go_disable_autoinstall = 1
 
 call vundle#end()
 filetype plugin indent on
