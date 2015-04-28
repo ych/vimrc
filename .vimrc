@@ -174,7 +174,7 @@ call vundle#begin()
 	" powerline
 	" https://github.com/Lokaltog/powerline
 	""""""""""""""""""""""""""""""
-	Plugin 'Lokaltog/powerline'
+	Plugin 'powerline/powerline'
 	set rtp+=~/vimrc/.vim/bundle/powerline/powerline/bindings/vim
 	
 	""""""""""""""""""""""""""""""
@@ -182,13 +182,6 @@ call vundle#begin()
 	" https://github.com/Valloric/YouCompleteMe
 	""""""""""""""""""""""""""""""
 	Plugin 'Valloric/YouCompleteMe'
-
-	""""""""""""""""""""""""""""""
-	" vim-go
-	" https://github.com/fatih/vim-go
-	""""""""""""""""""""""""""""""
-	Plugin 'fatih/vim-go'
-	let g:go_disable_autoinstall = 1
 
 call vundle#end()
 filetype plugin indent on
