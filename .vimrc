@@ -1,32 +1,32 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General                                                     "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible			" Get out of VI's compatible mode
-set autoindent				" Copy indent from current line when starting a new line
-set autoread				" Set to auto read when a file is changed from the outside
-set bg=dark				" Use {color} for the background
-set enc=utf-8				" Default encoding
-set tenc=utf-8				" Default term encoding
-set fenc=utf-8				" Default file encoding
-set fencs=utf-8,cp950,big5,euc-jp	" File encodings guess list
-set exrc				" Include a .vimrc in the project's directory
-set secure				" 避免執行現在目錄下 owner 不是自己的 .vimrc 之 autocmd
-set showcmd				" See partial commands as you type
-set showmatch				" Cursor shows matching ) and }
-set showmode				" Show current mode
-set number				" Show line number
-set backspace=2				" Can use backspace
-set history=500				" Set how many lines of history VIM have to remember
-set t_Co=256				" Set number of colors
-set ruler				" Show the cursor position all the time
-set wildmenu				" Wild char completion menu
-set smartcase				" Ignore case if search pattern is all lowercase,case-sensitive otherwise
-set smarttab				" Insert tabs on the start of a line according to context
-set showfulltag				" Show full completion tags
-set laststatus=2			" The last window will always have a status line
-set cursorline				" Highlight the screen line of the cursor
-set hlsearch				" search highlighting
-set wildignore+=*.o,*.a,*.la,*.lo,*.so  " Files match with one of these patterns are ignored when completing names
+set nocompatible				" Get out of VI's compatible mode
+set autoindent					" Copy indent from current line when starting a new line
+set autoread					" Set to auto read when a file is changed from the outside
+set bg=dark					" Use {color} for the background
+set enc=utf-8					" Default encoding
+set tenc=utf-8					" Default term encoding
+set fenc=utf-8					" Default file encoding
+set fencs=utf-8,gb2312,cp950,big5,euc-jp	" File encodings guess list
+set exrc					" Include a .vimrc in the project's directory
+set secure					" 避免執行現在目錄下 owner 不是自己的 .vimrc 之 autocmd
+set showcmd					" See partial commands as you type
+set showmatch					" Cursor shows matching ) and }
+set showmode					" Show current mode
+set number					" Show line number
+set backspace=2					" Can use backspace
+set history=500					" Set how many lines of history VIM have to remember
+set t_Co=256					" Set number of colors
+set ruler					" Show the cursor position all the time
+set wildmenu					" Wild char completion menu
+set smartcase					" Ignore case if search pattern is all lowercase,case-sensitive otherwise
+set smarttab					" Insert tabs on the start of a line according to context
+set showfulltag					" Show full completion tags
+set laststatus=2				" The last window will always have a status line
+set cursorline					" Highlight the screen line of the cursor
+set hlsearch					" search highlighting
+set wildignore+=*.o,*.a,*.la,*.lo,*.so,*.pyc  	" Files match with one of these patterns are ignored when completing names
 "set list listchars=tab:»-,trail:·,extends:>
 
 if has('cscope')
