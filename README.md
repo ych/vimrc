@@ -20,24 +20,7 @@ Enable extra function of plugins(Instructions for Debian-based system only)
 # YouCompleteMe
 
 ```
-sudo aptitude install python-dev cmake build-essential
+sudo aptitude install python-dev cmake build-essential python-dev python3-dev
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
-```
-
-# powerline
-```
-sudo aptitude install python-pip python-psutil
-wget https://github.com/libgit2/libgit2/archive/v0.21.0.tar.gz
-tar xf v0.21.0.tar.gz
-cd libgit2-0.21.0/
-cmake .
-make
-sudo make install
-cd ..
-rm -rf v0.21.0.tar.gz libgit2-0.21.0
-sudo ldconfig
-pip install cffi
-pip install pygit2
-
 ```
