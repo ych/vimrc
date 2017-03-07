@@ -20,7 +20,13 @@ Enable extra function of plugins(Instructions for Debian-based system only)
 # YouCompleteMe
 
 ```
-sudo aptitude install python-dev cmake build-essential python-dev python3-dev
+sudo apt install python-dev cmake build-essential python-dev python3-dev
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
+```
+
+or
+```
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt install vim vim-youcompleteme
 ```
