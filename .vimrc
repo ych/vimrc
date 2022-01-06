@@ -1,4 +1,42 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug-in configuration                                       "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
+call plug#begin('~/.vim/plugged')
+
+	Plug 'scrooloose/nerdtree'
+	nmap <F7> :NERDTreeToggle<CR>
+	let g:NERDTreeWinSize = 25
+
+	Plug 'scrooloose/nerdcommenter'
+
+	Plug 'sjl/gundo.vim'
+	nmap <F5> :GundoToggle<CR>
+	let g:gundo_right = 1
+	let g:gundo_help = 0		" Set this to 0 to disable the help text in the Gundo graph window
+	let g:gundo_close_on_revert = 1	" Set this to 1 to automatically close the Gundo windows when reverting
+	let g:gundo_width = 50
+	let g:gundo_prefer_python3 = 1
+
+	Plug 'Yggdroot/indentLine'
+	let g:indentLine_enabled = 1
+	let g:indent_guides_guide_size = 1  " 指定对齐线的尺寸
+	let g:indent_guides_start_level = 2  " 从第二层开始可视化显示缩进
+
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+	Plug 'itchyny/lightline.vim'
+
+	Plug 'tomasiser/vim-code-dark'
+
+	Plug 'inkarkat/vim-mark'
+
+	Plug 'editorconfig/editorconfig-vim'
+
+call plug#end()
+filetype plugin indent on
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General                                                     "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible				" Get out of VI's compatible mode
@@ -27,32 +65,12 @@ set laststatus=2				" The last window will always have a status line
 set cursorline					" Highlight the screen line of the cursor
 set hlsearch					" search highlighting
 set wildignore+=*.o,*.a,*.la,*.lo,*.so,*.pyc  	" Files match with one of these patterns are ignored when completing names
-"set list listchars=tab:»-,trail:·,extends:>
-
-if has('cscope')
-	set cscopetag
-
-	if has('quickfix')
-		set cscopequickfix=s-,c-,d-,i-,t-,e-
-	endif
-
-	if filereadable("cscope.out")
-		cscope add cscope.out
-	endif
-
-	set cscopeverbose
-endif
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Color Scheme                                                "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"colorscheme xorium
-"colorscheme molokai
-"colorscheme inkpot
-"colorscheme zenburn
-colorscheme yzlin256
-
+set visualbell					" Vim will flash its screen instead of sounding a beep
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set cursorline
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+colorscheme codedark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mapping                                                     "
@@ -63,125 +81,28 @@ let g:mapleader = ","
 nmap <Leader>w :w!<CR>
 nmap <Leader>q :q<CR>
 nmap <Leader>p :set paste<CR>
-nmap <Leader>c :!./configure<CR>
-nmap <Leader>mn :set makeprg=make<CR>
 nmap <C-H> <C-W>h
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-L> <C-W>l
 
-" Only for C
-nmap <F9> :!ctags --languages=c -R --sort=yes --c-kinds=+lx --fields=+aS --extra=+q .<CR>
-nmap <F6> :!find . -iname '*.[ch]' \| cscope -Rbq<CR>
-" For C++ and C
-"nmap <F9> :!ctags --languages=c,c++ -R --sort=yes --c++-kinds=+plx --c-kinds=+plx --fields=+iaS --extra=+q .<CR>
-"nmap <F6> :!find . -iname '*.[ch]' -or -iname '*.[ch]pp' \| cscope -Rbq<CR>
-" Auto complete
-imap ,, <C-X><C-O>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Folding                                                     "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set foldmethod=syntax
+set foldlevelstart=1
 let g:xml_syntax_folding=1
-
+let g:c_syntax_folding=1
+let g:cpp_syntax_folding=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FileType                                                    "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"au BufRead,BufNewFile *.go	setfiletype go
-"autocmd FileType c,cpp,cc,h	set cindent
-"autocmd FileType c		set omnifunc=ccomplete#Complete
-let c_space_errors = 1
-
+let g:c_space_errors = 1
+let g:cpp_space_errors = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax                                                      "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on				" syntax highlight
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug-in configuration                                       "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-	""""""""""""""""""""""""""""""
-	" Vundle.vim
-	" https://github.com/gmarik/Vundle.vim
-	""""""""""""""""""""""""""""""
-	Plugin 'gmarik/Vundle.vim'
-
-	""""""""""""""""""""""""""""""
-	" tagbar
-	" https://github.com/majutsushi/tagbar
-	""""""""""""""""""""""""""""""
-	Plugin 'majutsushi/tagbar'
-	nmap <F8> :TagbarToggle<CR>
-	" set focus to TagBar when opening it
-	let g:tagbar_autofocus = 1
-	let g:tagbar_width = 25
-	let g:tagbar_type_go = {
-	    \ 'ctagstype' : 'go',
-	    \ 'kinds'     : [
-		\ 'p:package',
-		\ 'i:imports:1',
-		\ 'c:constants',
-		\ 'v:variables',
-		\ 't:types',
-		\ 'n:interfaces',
-		\ 'w:fields',
-		\ 'e:embedded',
-		\ 'm:methods',
-		\ 'r:constructor',
-		\ 'f:functions'
-	    \ ],
-	    \ 'sro' : '.',
-	    \ 'kind2scope' : {
-		\ 't' : 'ctype',
-		\ 'n' : 'ntype'
-	    \ },
-	    \ 'scope2kind' : {
-		\ 'ctype' : 't',
-		\ 'ntype' : 'n'
-	    \ },
-	    \ 'ctagsbin'  : 'gotags',
-	    \ 'ctagsargs' : '-sort -silent'
-	\ }
-
-	""""""""""""""""""""""""""""""
-	" nerdtree
-	" https://github.com/scrooloose/nerdtree
-	""""""""""""""""""""""""""""""
-	Plugin 'scrooloose/nerdtree'
-	nmap <F7> :NERDTreeToggle<CR>
-	let g:NERDTreeWinSize = 25
-
-	""""""""""""""""""""""""""""""
-	" gundo
-	" https://github.com/sjl/gundo.vim
-	""""""""""""""""""""""""""""""
-	Plugin 'sjl/gundo.vim'
-	nmap <F5> :GundoToggle<CR>
-	let g:gundo_right = 1
-	let g:gundo_help = 0		" Set this to 0 to disable the help text in the Gundo graph window
-	let g:gundo_close_on_revert = 1	" Set this to 1 to automatically close the Gundo windows when reverting
-	let g:gundo_width = 25
-
-	""""""""""""""""""""""""""""""
-	" powerline
-	" https://github.com/Lokaltog/powerline
-	""""""""""""""""""""""""""""""
-	Plugin 'powerline/powerline'
-	set rtp+=~/vimrc/.vim/bundle/powerline/powerline/bindings/vim
-	
-	""""""""""""""""""""""""""""""
-	" YouCompleteMe
-	" https://github.com/Valloric/YouCompleteMe
-	""""""""""""""""""""""""""""""
-	Plugin 'Valloric/YouCompleteMe'
-
-call vundle#end()
-filetype plugin indent on
