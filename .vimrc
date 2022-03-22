@@ -1,143 +1,545 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug-in configuration                                       "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" leader key 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ";"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" custom settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let beauty_switch=1    
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" common
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible         
+filetype on              
+filetype plugin on       
+set noeb                 
+syntax enable            
+syntax on                
+set t_Co=256             
+set showcmd              
+set ruler                
+set laststatus=2         
+set number               
+set relativenumber
+set cursorline           
+set whichwrap+=<,>,h,l   
+set ttimeoutlen=0
+set virtualedit=block,onemore
+" set mouse=a
+set termguicolors
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Indent 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set autoindent
+set cindent
+set cinoptions=g0,:0,N-s,(0
+set smartindent
+filetype indent on
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+set backspace=2
+set sidescroll=10
+set nofoldenable
+set wrap
+set linebreak
+set breakindent
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" comlete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set wildmenu
+set completeopt-=preview
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set hlsearch
+set incsearch
+set ignorecase
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" cache
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nobackup
+set noswapfile
+set autoread
+set autowrite
+set confirm
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" encoding
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set langmenu=zh_CN.UTF-8
+set helplang=cn
+set termencoding=utf-8
+set encoding=utf8
+set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Locate to last position while open
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" plugin list
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
+Plug 'NerDante/smartColors'
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'  }
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'Yggdroot/indentLine'
+Plug 'mhinz/vim-startify'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+Plug 'inkarkat/vim-ingo-library', {'branch': 'stable'}
+Plug 'inkarkat/vim-mark', {'branch': 'stable'}
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'easymotion/vim-easymotion'
+Plug 'Chiel92/vim-autoformat'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'mbbill/undotree'
+"Plug 'lilydjwg/colorizer'
 
-	Plug 'scrooloose/nerdtree'
-	nmap <F7> :NERDTreeToggle<CR>
-	let g:NERDTreeWinSize = 25
+if beauty_switch
+    Plug 'ryanoasis/vim-devicons'
+endif
 
-	Plug 'scrooloose/nerdcommenter'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install()  }, 'for': ['markdown', 'vim-plug'] }
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'mg979/vim-visual-multi'
+Plug 'luochen1990/rainbow'
+Plug 't9md/vim-choosewin'
+Plug 'liuchengxu/vim-which-key'
+Plug 'voldikss/vim-floaterm'
+Plug 'gcmt/wildfire.vim'
+Plug 'tpope/vim-surround'
 
-	Plug 'sjl/gundo.vim'
-	nmap <F5> :GundoToggle<CR>
-	let g:gundo_right = 1
-	let g:gundo_help = 0		" Set this to 0 to disable the help text in the Gundo graph window
-	let g:gundo_close_on_revert = 1	" Set this to 1 to automatically close the Gundo windows when reverting
-	let g:gundo_width = 50
-	let g:gundo_prefer_python3 = 1
-
-	Plug 'Yggdroot/indentLine'
-	let g:indentLine_enabled = 1
-	let g:indent_guides_guide_size = 1  " 指定对齐线的尺寸
-	let g:indent_guides_start_level = 2  " 从第二层开始可视化显示缩进
-
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-	Plug 'itchyny/lightline.vim'
-
-	Plug 'tomasiser/vim-code-dark'
-
-	Plug 'inkarkat/vim-mark'
-
-	Plug 'editorconfig/editorconfig-vim'
-
-	Plug 'ludovicchabant/vim-gutentags'
-	" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
-	let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-	let g:gutentags_modules = []
-	if executable('gtags-cscope') && executable('gtags')
-		set cscopetag
-		set cscopeprg=gtags-cscope
-		set cscopeverbose
-		let g:gutentags_modules += ['gtags_cscope']
-	endif
-	" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-	let g:gutentags_cache_dir = expand('~/.cache/tags')
-
-	Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-	" don't show the help in normal mode
-	let g:Lf_HideHelp = 1
-	let g:Lf_UseCache = 0
-	let g:Lf_UseVersionControlTool = 0
-	let g:Lf_IgnoreCurrentBufferName = 1
-	" popup mode
-	let g:Lf_WindowPosition = 'popup'
-	let g:Lf_PreviewInPopup = 1
-	let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-	let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-	let g:Lf_ShortcutF = "<leader>ff"
-	" should use `Leaderf gtags --update` first
-	let g:Lf_GtagsAutoGenerate = 0
-	"let g:Lf_Gtagslabel = 'native-pygments'
-
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'  }
+Plug 'tomasiser/vim-code-dark'
+" List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-filetype plugin indent on
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General                                                     "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible				" Get out of VI's compatible mode
-set autoindent					" Copy indent from current line when starting a new line
-set autoread					" Set to auto read when a file is changed from the outside
-set bg=dark					" Use {color} for the background
-set enc=utf-8					" Default encoding
-set tenc=utf-8					" Default term encoding
-set fenc=utf-8					" Default file encoding
-set fencs=utf-8,gb2312,cp950,big5,euc-jp	" File encodings guess list
-set exrc					" Include a .vimrc in the project's directory
-set secure					" 避免執行現在目錄下 owner 不是自己的 .vimrc 之 autocmd
-set showcmd					" See partial commands as you type
-set showmatch					" Cursor shows matching ) and }
-set showmode					" Show current mode
-set number					" Show line number
-set backspace=2					" Can use backspace
-set history=500					" Set how many lines of history VIM have to remember
-set t_Co=256					" Set number of colors
-set ruler					" Show the cursor position all the time
-set wildmenu					" Wild char completion menu
-set smartcase					" Ignore case if search pattern is all lowercase,case-sensitive otherwise
-set smarttab					" Insert tabs on the start of a line according to context
-set showfulltag					" Show full completion tags
-set laststatus=2				" The last window will always have a status line
-set cursorline					" Highlight the screen line of the cursor
-set hlsearch					" search highlighting
-set wildignore+=*.o,*.a,*.la,*.lo,*.so,*.pyc  	" Files match with one of these patterns are ignored when completing names
-set visualbell					" Vim will flash its screen instead of sounding a beep
-set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-set cursorline
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" plugin set
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"colorscheme: onedark, gruvbox, codedark
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set background=light
+set background=dark
+" colorscheme onedark
+" colorscheme gruvbox
 colorscheme codedark
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Mapping                                                     "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set map leader
-let g:mapleader = ","
+"plugset: vim-airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:airline_theme="onedark" "open if colorscheme not support vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#virtualenv#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
 
-noremap <Leader>w :w!<CR>
-noremap <Leader>q :q<CR>
-noremap <Leader>p :set paste<CR>
-noremap <Leader>fg :Leaderf gtags<CR>
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-noremap <C-H> <C-W>h
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-L> <C-W>l
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#fnametruncate = 16
+let g:airline#extensions#tabline#fnamecollapse = 2
+let g:airline#extensions#tabline#buffer_idx_mode = 1"
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Folding                                                     "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set foldmethod=syntax
-set foldlevelstart=1
-let g:xml_syntax_folding=1
-let g:c_syntax_folding=1
-let g:cpp_syntax_folding=1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>p <Plug>AirlineSelectPrevTab
+nmap <leader>0 <Plug>AirlineSelectNextTab
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FileType                                                    "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:c_space_errors = 1
-let g:cpp_space_errors = 1
+if !exists('g:airline_symbols')
+   let g:airline_symbols = {}
+endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax                                                      "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax on				" syntax highlight
+if beauty_switch
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = ''
+else
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = ''
+endif
 
+"plugset: LeaderF
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Lf_ShortcutF = '<leader>ff' "find in current project directory
+let g:Lf_ShortcutB = '<leader>fb'
+let g:Lf_WindowHeight = 0.70
+let g:Lf_WildIgnore = { 
+            \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh','.clangd', '.clangx'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \}
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_ShowRelativePath = 1
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_ShowDevIcons = 1
+let g:Lf_DevIconsFont = "DejaVuSansMono Nerd Font Mono"
+nmap <leader>fg :Leaderf gtags<cr>
+
+"plugset: startify"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:startify_custom_header = [
+            \'    _____                      __     _    ___          ', 
+            \'   / ___/____ ___  ____ ______/ /_   | |  / (_)___ ___  ', 
+            \'   \__ \/ __ `__ \/ __ `/ ___/ __/   | | / / / __ `__ \ ', 
+            \'  ___/ / / / / / / /_/ / /  / /_     | |/ / / / / / / / ', 
+            \' /____/_/ /_/ /_/\__,_/_/   \__/     |___/_/_/ /_/ /_/  ', 
+            \]
+
+let g:startify_lists = [
+ \ { 'type': 'sessions',  'header': ['   Saved Sessions'] },
+ \ { 'type': 'files',     'header': ['   Recent files']   },
+ \ ]
+
+"
+"plugset: vim-gutentags"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+let g:gutentags_ctags_tagfile = '.tags'
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+let g:gutentags_modules = []
+if executable('ctags')
+    let g:gutentags_modules += ['ctags']
+endif
+if executable('gtags-cscope') && executable('gtags')
+    let g:gutentags_modules += ['gtags_cscope']
+endif
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+let g:gutentags_auto_add_gtags_cscope = 0
+
+"plugset: gutentags_plus"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gutentags_plus_switch = 1
+let g:gutentags_plus_nomap = 1
+noremap <silent> <leader>gf :GscopeFind s <C-R><C-W><cr>
+noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>
+
+"plugset : coc.vim 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:coc_disable_startup_warning=1
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Remap keys for gotos
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+let g:coc_global_extensions =[
+            \'coc-pairs', 
+            \'coc-json', 
+            \'coc-python', 
+            \'coc-java', 
+            \'coc-lists', 
+            \'coc-stylelint', 
+            \'coc-html', 
+            \'coc-css', 
+            \'coc-git', 
+            \'coc-snippets', 
+            \'coc-clangd',
+            \'coc-prettier']
+
+"plugset: tagbar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_sort = 0
+let g:tagbar_left = 0
+
+"plugset: vim-table-mode
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:table_mode_corner='|'
+let g:table_mode_disable_mappings = 1
+let g:table_mode_disable_tableize_mappings = 1
+let g:table_mode_map_prefix = '<Leader>e'
+let g:table_mode_toggle_map = 't'
+
+"plugset: easymotion
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_do_mapping = 0 
+let g:EasyMotion_smartcase = 1
+
+"plugset: nerdcommenter
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+let g:NERDAltDelims_c = 1
+let g:NERDCreateDefaultMappings = 0
+nmap <leader>c <plug>NERDCommenterToggle
+vmap <leader>c <plug>NERDCommenterToggle
+
+" plugset: vim-choosewin
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:choosewin_overlay_enable = 1
+let g:choosewin_statusline_replace = 1
+
+" plugset: colorizer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:colorizer_nomap = 1
+
+" plugset: vim-floaterm
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:floaterm_keymap_toggle = '<leader>t'
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.8
+
+" plugset: vim-hexokinase'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'vim']
+let g:Hexokinase_highlighters = ['backgroundfull']
+
+" plugset: vim-which-key  && Main key mapping
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call which_key#register(';', "g:which_key_map")
+nnoremap <silent> <leader> :<c-u>WhichKey ";"<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual ";"<CR>
+set timeoutlen=500
+
+let g:which_key_map =  {}
+nnoremap <silent> <leader>, <c-o>
+let g:which_key_map[','] = '<== back'
+nnoremap <leader>; :LeaderfBufTag<cr>
+let g:which_key_map[';'] = 'tag-of-current'
+nnoremap <leader>b :LeaderfBuffer<cr>
+let g:which_key_map['b'] = 'Choose-opened-buffer'
+
+let g:which_key_map['1'] = 'Switch-buffer 1'
+let g:which_key_map['2'] = 'Switch-buffer 2'
+let g:which_key_map['3'] = 'Switch-buffer 3'
+let g:which_key_map['4'] = 'Switch-buffer 4'
+let g:which_key_map['5'] = 'Switch-buffer 5'
+let g:which_key_map['6'] = 'Switch-buffer 6'
+let g:which_key_map['7'] = 'Switch-buffer 7'
+let g:which_key_map['8'] = 'Switch-buffer 8'
+let g:which_key_map['9'] = 'Switch-buffer 9'
+let g:which_key_map['0'] = 'Next-Buffer'
+let g:which_key_map['p'] = 'Previous-Buffer'
+
+nmap <leader>s <Plug>(easymotion-s)
+let g:which_key_map['s'] = 'move-to-ch'
+
+let g:which_key_map['t'] = 'toggle-terminal'
+
+let g:which_key_map.c = 'comment-toggle'
+
+let g:which_key_map.e = {
+      \ 'name' : '+edit' ,
+      \ ' ' : ['<Plug>(EasyAlign)', 'easy align'],
+      \ 'd' : ['d$',                'delete left of line'],
+      \ 'f' : ['Autoformat',        'format current file'],
+      \ 'm' : [':MarkdownPreview',  'preview markdown browser'],
+      \ 't' : [':TableModeToggle',   'table mode toggle'],
+      \ }
+
+let g:which_key_map.f = {
+      \ 'name' : '+find' ,
+      \ 'f' : [':LeaderfFile',   'file in project'] ,
+      \ 'b' : [':LeaderfBuffer', 'opened buffer'] ,
+      \ 't' : [':LeaderfBufTag', 'tag of current file'] ,
+      \ 'a' : [':LeaderfTag',    'tag of project'] ,
+      \ }
+
+nmap <leader>k :bdelete<CR>
+let g:which_key_map.k = 'clos-current-buffer'
+
+let g:which_key_map.g = { 'name' : '+goto'  }
+let g:which_key_map.g.d = 'definition'
+let g:which_key_map.g.r = 'references'
+let g:which_key_map.g.y = 'type-definition'
+let g:which_key_map.g.i = 'implementation'
+let g:which_key_map.g.f = 'reference-tagbased'
+let g:which_key_map.g.g = 'definition-tagbased'
+
+let g:which_key_map.m = 'mark-current-symbol'
+let g:which_key_map.n = 'unmark-current-symbol'
+
+let g:which_key_map.o = {
+      \ 'name' : '+open' ,
+      \ 'c' : [':CocConfig',      'coc config'],
+      \ 'e' : [':NERDTreeToggle', 'filetree toggle'] ,
+      \ 'f' : [':NERDTreeFind',   'loacte current file in filetree'] ,
+      \ 's' : [':Startify',       'startify'],
+      \ 't' : [':TagbarToggle',   'tagbar toggle'] ,
+      \ 'u' : [':UndotreeToggle', 'undotree toggle'] ,
+      \ 'v' : [':edit ~/.vimrc',  'vim config'],
+      \ }
+
+let g:which_key_map.q = {
+      \ 'name' : '+close' ,
+      \ 'q' : ['cclose',  'close quickfix'] ,
+      \ 'b' : ['bdelete', 'close current buffer'] ,
+      \ 'w' : ['q',       'close window'] ,
+      \ }
+
+let g:which_key_map.v = {
+      \ 'name' : '+view' ,
+      \ 'i' : [':IndentLinesToggle','toggle indent line'],
+      \ 'n' : ['ToggleLineNumber()','toggle line number'],
+      \ 'r' : [':RainbowToggle',    'toggle rainbow braces'],
+      \ 't' : ['ToggleWrap()',      'toggle wrap content'],
+      \ 'c' : [':HexokinaseToggle',      'toggle hex-color highlight'],
+      \ }
+
+let g:which_key_map.w = {
+      \ 'name' : '+window' ,
+      \ 'a' : ['<c-w>5+',           'expand current split'] ,
+      \ 'd' : ['<c-w>5-',           'reduce current split'] ,
+      \ '=' : ['<c-w>=',            'resize split'] ,
+      \ 'j' : ['<c-w>j',            'move down'] ,
+      \ 'k' : ['<c-w>k',            'move up'] ,
+      \ 'l' : ['<c-w>l',            'move right'] ,
+      \ 'h' : ['<c-w>h',            'move left'] ,
+      \ 's' : [':split',            'split horizontal'] ,
+      \ 'v' : [':vsplit',           'split vertical'] ,
+      \ 'w' : ['<Plug>(choosewin)', 'select window'] ,
+      \ 'q' : [':q',                'close window'] ,
+      \ 'c' : ['BufCloseOthers()',  'close other buffer'] ,
+      \ }
+
+let g:which_key_map.j = {
+      \ 'name' : '+Jump' ,
+      \ 's' : ['<Plug>(easymotion-s)',            'Move to character'],
+      \ 'w' : ['<Plug>(easymotion-sn)',           'Move to word'],
+      \ 'j' : ['<Plug>(easymotion-j)',            'below(line)'],
+      \ 'k' : ['<Plug>(easymotion-k)',            'up(line)'],
+      \ 'l' : ['<Plug>(easymotion-lineforward)',  'line forward'],
+      \ 'h' : ['<Plug>(easymotion-linebackward)', 'line backward'],
+      \ }
+
+let g:which_key_map.x = {
+      \ 'name' : '+Git' ,
+      \ 'l' : [':GV',         'logs'],
+      \ 'c' : [':GV!',        'logs include current file'],
+      \ 's' : [':Gstatus',    'git status'],
+      \ 'd' : [':Gdiffsplit', 'git diff'],
+      \ 'r' : [':Gread',      'git checkout current file'],
+      \ 'q' : ['q',           'close'],
+      \ }
+
+"hided maps
+let g:which_key_map.r = "which_key_ignore"
+
+" functions define
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ToggleWrap()
+    if (&wrap == 1)
+        set nowrap
+    else
+        set wrap
+        set linebreak
+        set breakindent
+    endif
+endfunction
+
+function! BufCloseOthers()
+    let l:currentBufNum = bufnr("%")
+    let l:alternateBufNum = bufnr("#")
+    for i in range(1, bufnr("$"))
+        if buflisted(i)
+            if i != l:currentBufNum
+                execute("bdelete".i)
+            endif
+        endif
+    endfor
+endfunction
+
+function! BufSwitch(num) abort
+    execute 'normal '."\<Plug>AirlineSelectTab".a:num
+endfunction
+
+function! ToggleLineNumber()
+    if (&number == 1)
+        set nonumber
+        set norelativenumber
+    else
+        set number
+        set relativenumber
+    endif
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" machine-depend config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/.vimrc.local
