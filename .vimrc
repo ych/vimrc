@@ -89,11 +89,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
 Plug 'inkarkat/vim-mark', {'branch': 'stable'}
 Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tomasiser/vim-code-dark'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -199,53 +197,9 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
-"plugset: LeaderF
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Lf_ShortcutF = '<leader>ff' "find in current project directory
-let g:Lf_ShortcutB = '<leader>fb'
-let g:Lf_WindowHeight = 0.70
-let g:Lf_WildIgnore = {
-            \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh','.clangd', '.clangx'],
-            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
-            \}
-let g:Lf_RootMarkers = ['.project', '.root', 'compile_commands.json']
-let g:Lf_WorkingDirectoryMode = 'Ac'
-let g:Lf_ShowRelativePath = 1
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-let g:Lf_ShowDevIcons = 1
-let g:Lf_DevIconsFont = "DejaVuSansMono Nerd Font Mono"
-let g:Lf_CacheDirectory = expand('~/')
-let g:Lf_GtagsAutoGenerate = 0
-let g:Lf_GtagsGutentags = 1 "using gutentags
-
-"plugset: vim-gutentags"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
-let g:gutentags_ctags_tagfile = '.tags'
-let s:vim_tags = expand(g:Lf_CacheDirectory.'\.LfCache\/gtags')
-let g:gutentags_cache_dir = s:vim_tags
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-endif
-let g:gutentags_modules = []
-if executable('gtags-cscope') && executable('gtags')
-    let g:gutentags_modules += ['gtags_cscope']
-endif
-let g:gutentags_auto_add_gtags_cscope = 1
-"let g:gutentags_trace = 1
-
-"plugset: gutentags_plus"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gutentags_plus_switch = 1
-let g:gutentags_plus_nomap = 1
-noremap <silent> <leader>gf :GscopeFind s <C-R><C-W><cr>   "Find symbol(reference) under cursor"
-noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>   "Find symbol definition under cursor"
-
 "plugset: tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tagbar_sort = 0
 let g:tagbar_left = 0
+let g:tagbar_ctags_bin = expand('~/bin/ctags')
 noremap <F8> :TagbarToggle<CR>
