@@ -93,6 +93,7 @@ Plug 'inkarkat/vim-mark', {'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tomasiser/vim-code-dark'
+Plug 'nachumk/systemverilog.vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
