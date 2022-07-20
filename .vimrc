@@ -248,3 +248,4 @@ noremap <silent> <leader>gg :GscopeFind g <C-R><C-W><cr>   "Find symbol definiti
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tagbar_sort = 0
 let g:tagbar_left = 0
+noremap <F8> :TagbarToggle<CR>
