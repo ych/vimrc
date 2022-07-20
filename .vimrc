@@ -208,7 +208,7 @@ let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh','.clangd', '.clangx'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
-let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_RootMarkers = ['.project', '.root', 'compile_commands.json']
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_ShowRelativePath = 1
 let g:Lf_WindowPosition = 'popup'
