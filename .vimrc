@@ -17,7 +17,7 @@ set showcmd
 set ruler
 set laststatus=2
 set number
-set relativenumber
+"set relativenumber
 set cursorline
 set whichwrap+=<,>,h,l
 set ttimeoutlen=0
@@ -86,7 +86,8 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'inkarkat/vim-ingo-library', {'branch': 'stable'}
