@@ -86,16 +86,17 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'inkarkat/vim-ingo-library', {'branch': 'stable'}
 Plug 'inkarkat/vim-mark', {'branch': 'stable'}
 Plug 'majutsushi/tagbar'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons' " optional for icon support
 Plug 'tomasiser/vim-code-dark'
 Plug 'nachumk/systemverilog.vim'
+Plug 'Yggdroot/indentLine'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -131,6 +132,7 @@ endfunction
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Remap keys for gotos
+nmap <silent> <leader>gc <Plug>(coc-declaration)
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
