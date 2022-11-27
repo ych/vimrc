@@ -1,15 +1,9 @@
-vimrc
-=====
+# zshrc
 
-ych's vimrc
+My configuration of vim, and this branch is *DEPRECATED*, please refer nvim branch
 
-Quick start
------------
+or use this command to clone nvim branch
 
 ```
-git clone https://github.com/ych/vimrc.git ~/vimrc
-ln -s ~/vimrc/.vimrc ~/.vimrc
-ln -s ~/vimrc/.vim ~/.vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PluginInstall
+git clone -b nvim git@github.com:ych/vimrc.git
 ```
