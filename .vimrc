@@ -95,7 +95,6 @@ Plug 'majutsushi/tagbar'
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons' " optional for icon support
 Plug 'tomasiser/vim-code-dark'
-Plug 'nachumk/systemverilog.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-fugitive'
 " List ends here. Plugins become visible to Vim after this call.
