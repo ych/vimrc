@@ -17,12 +17,12 @@ set showcmd
 set ruler
 set laststatus=2
 set number
-"set relativenumber
+set relativenumber
 set cursorline
 set whichwrap+=<,>,h,l
 set ttimeoutlen=0
 set virtualedit=block,onemore
-" set mouse=a
+set mouse=a
 set termguicolors
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
