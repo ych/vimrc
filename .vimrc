@@ -22,7 +22,7 @@ set cursorline
 set whichwrap+=<,>,h,l
 set ttimeoutlen=0
 set virtualedit=block,onemore
-set mouse=a
+set mouse=v
 set termguicolors
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -164,6 +164,7 @@ let g:coc_global_extensions =[
             \'coc-snippets',
             \'coc-clangd',
             \'coc-typos',
+            \'coc-python',
             \'coc-prettier']
 
 "plugset: vim-airline
