@@ -84,6 +84,28 @@ set fileencodings=utf8,big5,cp950,ucs-bom,gbk,cp936,gb2312,gb18030,euc-jp
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" function
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ToggleCopyMode()
+    if !exists('s:copy_mode')
+        let s:copy_mode=0
+    endif
+    if(s:copy_mode == 0)
+        let s:copy_mode=1
+		set nonumber
+		set norelativenumber
+		set signcolumn=no
+    else
+        let s:copy_mode=0
+		set number
+		set relativenumber
+		set signcolumn=yes
+    endif
+endfunction
+
+nmap <leader>cp :call ToggleCopyMode()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugin list
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins will be downloaded under the specified directory.
