@@ -40,7 +40,9 @@ set softtabstop=4
 set smarttab
 set backspace=2
 set sidescroll=10
+set foldmethod=syntax
 set nofoldenable
+set foldlevel=1
 set wrap
 set linebreak
 set breakindent
