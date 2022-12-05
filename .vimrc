@@ -192,7 +192,9 @@ let g:coc_global_extensions =[
             \'coc-clangd',
             \'coc-typos',
             \'coc-python',
-            \'coc-prettier']
+            \'coc-prettier',
+            \'coc-jedi',
+            \'@yaegassy/coc-pylsp']
 
 "plugset: vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
