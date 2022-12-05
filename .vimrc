@@ -116,7 +116,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'inkarkat/vim-ingo-library', {'branch': 'stable'}
 Plug 'inkarkat/vim-mark', {'branch': 'stable'}
 Plug 'majutsushi/tagbar'
-Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+"Plug 'ibhagwan/fzf-lua', {'branch': 'main'} "cannot work with coc-fzf
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'kyazdani42/nvim-web-devicons' " optional for icon support
 Plug 'tomasiser/vim-code-dark'
 Plug 'Yggdroot/indentLine'
