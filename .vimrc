@@ -106,6 +106,12 @@ endfunction
 nmap <leader>cp :call ToggleCopyMode()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" provider
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " plugin list
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins will be downloaded under the specified directory.
