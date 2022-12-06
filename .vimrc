@@ -116,7 +116,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'inkarkat/vim-ingo-library', {'branch': 'stable'}
 Plug 'inkarkat/vim-mark', {'branch': 'stable'}
 Plug 'majutsushi/tagbar'
-"Plug 'ibhagwan/fzf-lua', {'branch': 'main'} "cannot work with coc-fzf
 Plug 'junegunn/fzf', {'do': './install --all --no-bash --no-fish --no-update-rc'}
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
@@ -124,6 +123,10 @@ Plug 'kyazdani42/nvim-web-devicons' " optional for icon support
 Plug 'tomasiser/vim-code-dark'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-fugitive'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -238,3 +241,7 @@ let g:tagbar_sort = 0
 let g:tagbar_left = 0
 let g:tagbar_ctags_bin = expand('~/bin/ctags')
 noremap <F8> :TagbarToggle<CR>
+
+"plugset: telescope
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"lua require('telescope').load_extension('fzf')
