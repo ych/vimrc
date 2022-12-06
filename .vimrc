@@ -117,7 +117,7 @@ Plug 'inkarkat/vim-ingo-library', {'branch': 'stable'}
 Plug 'inkarkat/vim-mark', {'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 "Plug 'ibhagwan/fzf-lua', {'branch': 'main'} "cannot work with coc-fzf
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', {'do': './install --all --no-bash --no-fish --no-update-rc'}
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'kyazdani42/nvim-web-devicons' " optional for icon support
@@ -194,8 +194,7 @@ let g:coc_global_extensions =[
             \'coc-typos',
             \'coc-python',
             \'coc-prettier',
-            \'coc-jedi',
-            \'@yaegassy/coc-pylsp']
+            \'coc-jedi']
 
 "plugset: vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
